@@ -1,4 +1,4 @@
-# Honeybadger::Ruby::Splitproject
+# Honeybadger::Splitproject
 
 Modification to Honeybadger gem that allows notifying multiple honeybadger projects from single Rails project.
 

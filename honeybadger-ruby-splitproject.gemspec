@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'honeybadger/ruby/splitproject/version'
+require 'honeybadger/splitproject/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "honeybadger-ruby-splitproject"
-  spec.version       = Honeybadger::Ruby::Splitproject::VERSION
+  spec.version       = Honeybadger::Splitproject::VERSION
   spec.authors       = ["Kamil Mroczek"]
-  spec.email         = ["kamil.mroczek@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.email         = ["kamil@thinknear.com"]
+  spec.summary       = %q{Split project into multiple Honeybadger projects.}
+  spec.description   = %q{Allows alerting to multiple Honeybadger projects from a single Rails project.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  
+  spec.add_dependency 'rspec'
+  spec.add_dependency 'honeybadger', '~> 1.13.0'
+  spec.add_dependency 'sidekiq', '~> 3.1.4'
 end
