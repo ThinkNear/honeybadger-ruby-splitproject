@@ -1,10 +1,22 @@
 require 'honeybadger/honeybadger'
 require 'honeybadger/key_helpers'
+require 'honeybadger/team_filter'
 
 module Honeybadger
   module Splitproject
-    
+    @@honeybadger_filters = [TeamFilter.new]
+
     class << self
+
+      def filters
+        @@honeybadger_filters
+      end
+
+      def add_filter(klass)
+        raise "MissingFilterMethod" unless klass.respond_to?(:filter)
+        @@honeybadger_filters << klass
+      end
+
       def add_notifiers_for_team(team_postfix)
         raise "Blank team given for Honeybadger." if team_postfix.nil? || team_postfix.strip.length == 0
         
@@ -31,7 +43,7 @@ module Honeybadger
         else
           Honeybadger.instance_eval do
             define_singleton_method("notify_#{team_postfix}") do |exception, options = {}|
-              notify(exception, options.merge({ api_key: api_key }))
+              notify(exception, options.merge({ tn_team: team_postfix }))
             end
           end
         end

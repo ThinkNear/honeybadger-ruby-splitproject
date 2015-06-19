@@ -41,14 +41,14 @@ describe Honeybadger::Splitproject do
             Honeybadger::Splitproject.add_notifiers_for_team("team1")
             @options = { :key => "1" }
 
-            expect(Honeybadger).to receive(:notify).with("exception", @options.merge(api_key: "api_key")).once
+            expect(Honeybadger).to receive(:notify).with("exception", @options.merge(tn_team: "team1")).once
 
             Honeybadger.notify_team1("exception", @options)
           end
           it "should default the options hash if none is passed in, for the notify method" do
             Honeybadger::Splitproject.add_notifiers_for_team("team1")
 
-            expect(Honeybadger).to receive(:notify).with("exception", { api_key: "api_key" }).once
+            expect(Honeybadger).to receive(:notify).with("exception", { tn_team: "team1" }).once
 
             Honeybadger.notify_team1("exception")
           end
@@ -65,7 +65,7 @@ describe Honeybadger::Splitproject do
             params = { param1: "1" }
             expected_params = { error_class: "error_class", error_message: "error_message", parameters: params }
 
-            expect(Honeybadger).to receive(:notify).with(expected_params, { api_key: "api_key" }).once
+            expect(Honeybadger).to receive(:notify).with(expected_params, { tn_team: "team1" }).once
 
             Honeybadger.notify_detailed_team1("error_class", "error_message", params)
           end
@@ -73,7 +73,7 @@ describe Honeybadger::Splitproject do
             Honeybadger::Splitproject.add_notifiers_for_team("team1")
             expected_params = { error_class: "error_class", error_message: "error_message", parameters: {} }
 
-            expect(Honeybadger).to receive(:notify).with(expected_params, api_key: "api_key").once
+            expect(Honeybadger).to receive(:notify).with(expected_params, tn_team: "team1").once
 
             Honeybadger.notify_detailed_team1("error_class", "error_message")
           end
