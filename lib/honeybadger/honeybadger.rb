@@ -20,6 +20,7 @@ module Honeybadger
 
     alias_method :notify_super, :notify
     alias_method :notify, :notify_base
+    alias_method :notify_or_ignore, :notify_base
 
     def set_team(team)
       Thread.current[:tn_honeybadger_team] = team.to_sym
