@@ -6,8 +6,8 @@ require 'honeybadger/splitproject/version'
 Gem::Specification.new do |spec|
   spec.name          = "honeybadger-ruby-splitproject"
   spec.version       = Honeybadger::Splitproject::VERSION
-  spec.authors       = ["Kamil Mroczek"]
-  spec.email         = ["kamil@thinknear.com"]
+  spec.authors       = ["Thinknear"]
+  spec.email         = ["services@thinknear.com"]
   spec.summary       = %q{Split project into multiple Honeybadger projects.}
   spec.description   = %q{Allows alerting to multiple Honeybadger projects from a single Rails project.}
   spec.homepage      = ""
@@ -21,5 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
-  spec.add_dependency 'honeybadger', '~> 2.1.0'
+  spec.add_dependency 'honeybadger', '>= 2.6.0'
 end
